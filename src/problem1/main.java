@@ -6,7 +6,7 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-
+//test
 public class main {
     private Scanner sc;
     private List<Integer> numbers = new ArrayList<Integer>();
