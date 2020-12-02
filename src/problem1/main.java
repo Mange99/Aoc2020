@@ -10,6 +10,7 @@ import java.util.*;
 
 //test
 public class main {
+    /*
     private ReadFromFile readFromFile = new ReadFromFile();
     private List<Integer> numbers;
     URL url = getClass().getResource("input.txt");
@@ -46,4 +47,6 @@ public class main {
     public static void main(String[] args) throws FileNotFoundException {
         new main();
     }
+
+     */
 }
