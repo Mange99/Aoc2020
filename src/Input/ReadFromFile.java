@@ -8,15 +8,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ReadFromFile {
-    private final List<Integer> elements = new ArrayList<>();
+    private final List<String> elements = new ArrayList<>();
     BufferedReader br;
 
-    public List<Integer> seperatedByLine(File fileName){
+    public List<String> seperatedByLine(File fileName){
         try{
             br = new BufferedReader(new FileReader(fileName));
             String strCurrentLine;
             while((strCurrentLine = br.readLine()) != null){
-                elements.add(Integer.parseInt(strCurrentLine));
+                elements.add((strCurrentLine));
             }
         }catch (IOException e){
             e.printStackTrace();
@@ -31,7 +31,7 @@ public class ReadFromFile {
         }
         return elements;
     }
-    public List<Integer> seperatedByComma(File fileName){
+    public List<String> seperatedByComma(File fileName){
         try{
             String line = null;
             br = new BufferedReader(new FileReader(fileName));
@@ -39,7 +39,7 @@ public class ReadFromFile {
             while ((line = br.readLine()) != null) {
                 String[] values = line.split(",");
                 for (String str : values) {
-                    elements.add(Integer.parseInt(str));
+                    elements.add((str));
                 }
             }
             br.close();
