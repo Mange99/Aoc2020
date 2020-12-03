@@ -7,16 +7,16 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ReadFromFile {
-    private final List<String> elements = new ArrayList<>();
+public class ReadFromFile<T> {
+    private final List<T> elements = new ArrayList<>();
     BufferedReader br;
 
-    public List<String> seperatedByLine(File fileName){
+    public List<T> seperatedByLine(File fileName){
         try{
             br = new BufferedReader(new FileReader(fileName));
             String strCurrentLine;
             while((strCurrentLine = br.readLine()) != null){
-                elements.add((strCurrentLine));
+                elements.add((T) strCurrentLine);
             }
         }catch (IOException e){
             e.printStackTrace();
@@ -31,7 +31,7 @@ public class ReadFromFile {
         }
         return elements;
     }
-    public List<String> seperatedByComma(File fileName){
+    public List<T> seperatedByComma(File fileName){
         try{
             String line = null;
             br = new BufferedReader(new FileReader(fileName));
@@ -39,7 +39,7 @@ public class ReadFromFile {
             while ((line = br.readLine()) != null) {
                 String[] values = line.split(",");
                 for (String str : values) {
-                    elements.add((str));
+                    elements.add((T) str);
                 }
             }
             br.close();

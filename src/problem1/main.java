@@ -9,15 +9,13 @@ import java.net.URL;
 import java.util.*;
 
 //test
-public class main {
-    /*
-    private ReadFromFile readFromFile = new ReadFromFile();
+public class main extends ReadFromFile<Integer>{
     private List<Integer> numbers;
     URL url = getClass().getResource("input.txt");
     File fileName = new File(url.getPath());
 
     public main() {
-        numbers = readFromFile.seperatedByLine(fileName);
+        numbers = seperatedByLine(fileName);
         twoNumbers();
         threeNumbers();
 
@@ -25,7 +23,7 @@ public class main {
     public void twoNumbers(){
         for(int i = 0; i < numbers.size(); i++){
             for(int j = 0; j < numbers.size(); j++){
-                if(numbers.get(i) != numbers.get(j) && numbers.get(i) + numbers.get(j) == 2020){
+                if(i != j && numbers.get(i) + numbers.get(j) == 2020){
                     System.out.println(numbers.get(i) * numbers.get(j));
                 }
             }
@@ -47,6 +45,4 @@ public class main {
     public static void main(String[] args) throws FileNotFoundException {
         new main();
     }
-
-     */
 }

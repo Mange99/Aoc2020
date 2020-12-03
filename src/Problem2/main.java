@@ -6,16 +6,15 @@ import java.io.File;
 import java.net.URL;
 import java.util.List;
 
-public class main {
+public class main extends ReadFromFile<String>{
     //test
-    private ReadFromFile readFromFile = new ReadFromFile();
     private List<String> numbers;
     private URL url = getClass().getResource("input.txt");
     private File fileName = new File(url.getPath());
     private int tot = 0;
 
     public main(){
-        numbers = readFromFile.seperatedByLine(fileName);
+        numbers = seperatedByLine(fileName);
         validPasswords();
         validPasswordsElite();
     }
