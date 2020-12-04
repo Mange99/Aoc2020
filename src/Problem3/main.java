@@ -6,7 +6,7 @@ import java.io.File;
 import java.net.URL;
 import java.util.List;
 
-public class main extends ReadFromFile<String> {
+public class main extends ReadFromFile {
     private List<String> structure;
     private final URL url = getClass().getResource("input.txt");
     private final File fileName = new File(url.getPath());
@@ -21,6 +21,7 @@ public class main extends ReadFromFile<String> {
         int third = slope(1, 5);
         int fourth = slope(1, 7);
         int fith = slope(2,1);
+
         System.out.println(first*second*third*fourth*fith);
 
     }

@@ -6,7 +6,7 @@ import java.io.File;
 import java.net.URL;
 import java.util.List;
 
-public class main extends ReadFromFile<String>{
+public class main extends ReadFromFile{
     //test
     private List<String> numbers;
     private URL url = getClass().getResource("input.txt");
