@@ -9,11 +9,11 @@ import java.net.URL;
 import java.util.*;
 
 //test
-public class main extends ReadFromFile<Integer>{
+public class main extends ReadFromFile{
     private List<Integer> numbers;
     URL url = getClass().getResource("input.txt");
     File fileName = new File(url.getPath());
-
+/*
     public main() {
         numbers = seperatedByLine(fileName);
         twoNumbers();
@@ -41,6 +41,8 @@ public class main extends ReadFromFile<Integer>{
         }
     }
 
+
+ */
 
     public static void main(String[] args) throws FileNotFoundException {
         new main();
