@@ -11,7 +11,6 @@ public class Main extends ReadFromFile {
     private final URL url = getClass().getResource("input.txt");
     private final File fileName = new File(url.getPath());
     private List<List<String>> groups = new ArrayList<>();
-    private List<String> trell = new ArrayList<>();
 
     public Main(){
         /*
@@ -36,21 +35,21 @@ public class Main extends ReadFromFile {
         }
         int sum = 0;
         for(List<String> list : groups){
-            trell.clear();
+            List<String> trell = new ArrayList<>();
             char[] first = list.get(0).toCharArray();
             for(int i = 0; i < first.length; i++){
                 trell.add(String.valueOf(first[i]));
             }
-            sum += getDuplicates(list);
+            sum += getDuplicates(list, trell);
         }
         System.out.println(sum);
 
     }
-    public int getDuplicates(List<String> list){
-        for(int i = 0; i < list.size(); i++){
-            trell = compare2Rows(trell, list.get(i));
+    public int getDuplicates(List<String> list, List<String> current){
+        for(int i = 1; i < list.size(); i++){
+            current = compare2Rows(current, list.get(i));
         }
-        return trell.size();
+        return current.size();
     }
 
     public List<String> compare2Rows(List<String> current, String next){
