@@ -11,51 +11,74 @@ public class Main extends ReadFromFile {
     private final URL url = getClass().getResource("input.txt");
     private final File fileName = new File(url.getPath());
     private List<List<String>> groups = new ArrayList<>();
+    private List<String> trell = new ArrayList<>();
 
     public Main(){
-        int sum = 0;
+        /*
+        totalAwnsers = seperatedByLine(fileName);
+        int sumGroup = 0;
+        sumGroup = first(totalAwnsers);
+        System.out.println(sumGroup);
+         */
         totalAwnsers = seperatedByLine(fileName);
 
+        int sumPerGroup = 0;
         int spaceIndex = 0;
         int counterPersons = 0;
+
+
         for(String persons : totalAwnsers){
             if(persons.length() < 1){
-                //genious solution not working
                 groups.add(totalAwnsers.subList(counterPersons, spaceIndex));
                 counterPersons = spaceIndex+1;
             }
             spaceIndex++;
         }
-        System.out.println(groups.get(0));
-        getDuplicates(groups.get(0));
+        int sum = 0;
+        for(List<String> list : groups){
+            trell.clear();
+            char[] first = list.get(0).toCharArray();
+            for(int i = 0; i < first.length; i++){
+                trell.add(String.valueOf(first[i]));
+            }
+            sum += getDuplicates(list);
+        }
+        System.out.println(sum);
 
     }
-    public void getDuplicates(List<String> group){
-        String totalen = "";
-        String duplicates = "";
-        for(String persons : group){
-            totalen += persons;
-            System.out.println(totalen);
+    public int getDuplicates(List<String> list){
+        for(int i = 0; i < list.size(); i++){
+            trell = compare2Rows(trell, list.get(i));
         }
-        System.out.println(totalen);
-        char[] tokens = totalen.toCharArray();
-        for(int i = 0; i < tokens.length; i++){
-            for(int j = i; j < tokens.length; j++){
-                if(tokens[i] == tokens[j]){
-                    duplicates += tokens[i];
-                    System.out.println(duplicates);
+        return trell.size();
+    }
+
+    public List<String> compare2Rows(List<String> current, String next){
+        List<String> duplicates = new ArrayList<>();
+        char[] currentArr = new char[current.size()];
+        for(int i = 0; i < current.size(); i++){
+            currentArr[i] = current.get(i).charAt(0);
+        }
+        char[] nextArr = next.toCharArray();
+        for(int i = 0; i < currentArr.length; i++){
+            for(int j = 0; j < nextArr.length; j++){
+                if(currentArr[i] == nextArr[j]){
+                    duplicates.add(String.valueOf(currentArr[i]));
                     break;
                 }
             }
         }
-        System.out.println(duplicates);
+        return duplicates;
     }
 
+    public int first(List<String> list){
+        int sum = 0;
+        for(String words : list){
+            sum += removeDups(words).length();
+        }
+        return sum;
+    }
 
-
-
-
-    /*
     public static String removeDups(String word) {
         Set<Character> chars = new HashSet<>();
         StringBuilder output = new StringBuilder(word.length());
@@ -67,10 +90,8 @@ public class Main extends ReadFromFile {
         }
         return output.toString();
     }
-    */
 
-
-    public static void main(String[] args) {
+   public static void main(String[] args) {
         new Main();
     }
 
