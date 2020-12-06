@@ -1,4 +1,4 @@
-package Problem3;
+package problem3;
 
 import Input.ReadFromFile;
 
