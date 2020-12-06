@@ -49,7 +49,7 @@ public class ReadFromFile{
             String allLines = "";
             while((strCurrentLine = br.readLine()) != null){
                 elements.add(strCurrentLine);
-              /*
+                /*
                 if("".equals(strCurrentLine)){
                     elements.add(allLines);
                     allLines = "";
@@ -57,7 +57,9 @@ public class ReadFromFile{
                     allLines += strCurrentLine;
                 }
 
-               */
+                 */
+
+
             }
         }catch (IOException e){
             e.printStackTrace();
