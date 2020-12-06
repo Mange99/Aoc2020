@@ -9,7 +9,38 @@ import java.util.List;
 
 public class ReadFromFile{
     private final List<String> elements = new ArrayList<>();
+    private final List<List<String>> groups = new ArrayList<>();
     BufferedReader br;
+
+    public List<List<String>> listOfListLines(File fileName){
+        try{
+            br = new BufferedReader(new FileReader(fileName));
+            String strCurrentLine;
+            String allLines = "";
+            while((strCurrentLine = br.readLine()) != null){
+                elements.add(allLines);
+                /*
+                if("".equals(strCurrentLine)){
+                    elements.add(allLines);
+                }else{
+                    allLines += strCurrentLine;
+                }
+
+                 */
+            }
+        }catch (IOException e){
+            e.printStackTrace();
+        }finally {
+            try{
+                if(br != null){
+                    br.close();
+                }
+            }catch (IOException e){
+                e.printStackTrace();
+            }
+        }
+        return groups;
+    }
 
     public List<String> seperatedByLine(File fileName){
         try{
@@ -17,14 +48,16 @@ public class ReadFromFile{
             String strCurrentLine;
             String allLines = "";
             while((strCurrentLine = br.readLine()) != null){
+                elements.add(strCurrentLine);
+              /*
                 if("".equals(strCurrentLine)){
                     elements.add(allLines);
                     allLines = "";
+                }else{
+                    allLines += strCurrentLine;
                 }
-                else{
-                    allLines += strCurrentLine + " ";
 
-                }
+               */
             }
         }catch (IOException e){
             e.printStackTrace();
