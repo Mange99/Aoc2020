@@ -25,6 +25,7 @@ public class Main extends ReadFromFile {
         int spaceIndex = 0;
         int counterPersons = 0;
 
+        System.out.println(totalAwnsers);
 
         for(String persons : totalAwnsers){
             if(persons.length() < 1){
@@ -33,6 +34,7 @@ public class Main extends ReadFromFile {
             }
             spaceIndex++;
         }
+        System.out.println(groups);
         int sum = 0;
         for(List<String> list : groups){
             List<String> trell = new ArrayList<>();
