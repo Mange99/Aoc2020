@@ -23,6 +23,28 @@ public class Main extends ReadFromFile {
         List<String> contentOfBag;
         contentOfBag = getContent(rules.get(0));
         System.out.println(contentOfBag);
+
+        List<String> smaller;
+        smaller = replaceContent(contentOfBag);
+        System.out.println(smaller);
+    }
+    public List<String> replaceContent(List<String> contentOfBag){
+        List<String> smallerContent = new ArrayList<>();
+        List<Integer> nrOfBags = new ArrayList<>();
+
+        for(int i = 0; i < contentOfBag.size(); i++){
+            char[] tokens = contentOfBag.get(0).toCharArray();
+            for(int j = 0; j < tokens.length; j++){
+                if(Character.isDigit(tokens[j])){
+                    nrOfBags.add(Integer.parseInt(String.valueOf(tokens[j])));
+                    if(contentOfBag.get(i).substring(j, contentOfBag.get(j).indexOf("bag")).equals("muted yellow")){
+                        smallerContent.add(contentOfBag.get(i).substring(j, contentOfBag.get(i).indexOf("bag")));
+                    }
+                }
+            }
+        }
+        System.out.println(nrOfBags);
+        return smallerContent;
     }
     public List<String> bags(List<String> rules){
         List<String> bags = new ArrayList<>();
