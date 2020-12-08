@@ -17,6 +17,33 @@ public class Main extends ReadFromFile {
         System.out.println(executions);
         int sum = execute(executions);
         System.out.println(sum);
+        boolean terminated = false;
+
+        while(!terminated){
+            List<String> copy = new ArrayList<>(executions);
+            for(int i = 0; i < copy.size(); i++){
+                if(copy.get(i).startsWith("nop")){
+                    copy.remove(i);
+                    copy.add(i, "jmp" + copy.get(i).substring(3));
+                    sum = execute(copy);
+                    if(sum > 0){
+                        terminated = true;
+                        break;
+                    }
+                }else if(copy.get(i).startsWith("jmp")){
+                    copy.remove(i);
+                    copy.add(i, "nop" + copy.get(i).substring(3));
+                    sum = execute(copy);
+                    if(sum > 0){
+                        terminated = true;
+                        break;
+
+                    }
+                }
+                copy = new ArrayList<>(executions);
+            }
+        }
+        System.out.println(sum);
     }
 
     public int execute(List<String> exec){
@@ -24,25 +51,19 @@ public class Main extends ReadFromFile {
         List<Integer> linesOfExecute = new ArrayList<>();
         linesOfExecute.add(Integer.MIN_VALUE);
         for(int i = 0; i < exec.size(); i++){
-            System.out.println(i);
-            System.out.println(linesOfExecute);
             for(int j = 0; j < linesOfExecute.size(); j++){
                 if(linesOfExecute.contains(i)){
-                    return accimulator;
+                    return 0;
                 }
             }
             linesOfExecute.add(i);
 
-            System.out.println(exec.get(i));
             String code = exec.get(i).substring(0,3);
-            //System.out.println(code);
             String operator = exec.get(i).substring(4,5);
-            //System.out.println(operator);
             int number = Integer.parseInt(exec.get(i).substring(5));
-            //System.out.println(number);
 
             if(code.equals("nop")){
-                System.out.println("doin nothing");
+                continue;
             }else if(code.equals("acc") && operator.equals("+")){
                 accimulator += number;
             }else if(code.equals("acc") && operator.equals("-")){
@@ -52,8 +73,12 @@ public class Main extends ReadFromFile {
             }else{
                 i -= number+1;
             }
+            if(i == exec.size()-1){
+                return accimulator;
+            }
         }
-        return accimulator;
+
+        return 0;
     }
 
     public static void main(String[] args) {

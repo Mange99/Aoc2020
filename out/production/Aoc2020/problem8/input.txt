@@ -490,7 +490,7 @@ jmp +2
 jmp -410
 acc +15
 nop -351
-nop -254
+jmp -254
 acc -2
 acc +15
 acc +11
